@@ -73,9 +73,9 @@ public class TestServiceOrders {
 	  
 	  
 	  @Test
-	  public void testPrepreDailyReport_TOTAL()
+	  public void testPrepareDailyReport_TOTAL()
 	   {
-			System.out.println("--->  testPrepreDailyReport_TOTAL  : check report data  IN-OUT total USD");
+			System.out.println("--->  testPrepareDailyReport_TOTAL  : check report data  IN-OUT total USD");
 			
 			//---preepare Test Data
 			serviceOrd.generateOrdersDays(0,0);
@@ -120,9 +120,9 @@ public class TestServiceOrders {
 	  
 	  
 	  @Test
-	  public void testPrepreDailyReport_INOUT()
+	  public void testPrepareDailyReport_INOUT()
 	   {
-			System.out.println("--->  testPrepreDailyReport_INOUT  : check report data  IN-OUT per entity");
+			System.out.println("--->  testPrepareDailyReport_INOUT  : check report data  IN-OUT per entity");
 			
 			//---preepare Test Data
 			serviceOrd.generateOrdersDays(0,0);

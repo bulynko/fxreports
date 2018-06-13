@@ -130,13 +130,13 @@ public class ServiceOrders {
 		listReportDailyTotalSell=new ArrayList<Order>();
 		listReportINOUT=new ArrayList<Order>();
 	    
-	    prepreDailyEntReport(OrderRules.SITE_BUY, listReportDailyBuy);
-	    prepreDailyEntReport(OrderRules.SITE_SELL,listReportDailySell);
+	    prepareDailyEntReport(OrderRules.SITE_BUY, listReportDailyBuy);
+	    prepareDailyEntReport(OrderRules.SITE_SELL,listReportDailySell);
 
-	    prepreDailyTotalReport(OrderRules.SITE_BUY,listReportDailyTotalBuy);
-	    prepreDailyTotalReport(OrderRules.SITE_SELL,listReportDailyTotalSell);
+	    prepareDailyTotalReport(OrderRules.SITE_BUY,listReportDailyTotalBuy);
+	    prepareDailyTotalReport(OrderRules.SITE_SELL,listReportDailyTotalSell);
 	    
-	    prepreDailyInOutReport( listReportINOUT );
+	    prepareDailyInOutReport( listReportINOUT );
 
 		Collections.sort(listReportINOUT, compareOrdersDateEnt);
 		Collections.sort(listReportDailyBuy, compareOrdersDateEnt);
@@ -147,7 +147,7 @@ public class ServiceOrders {
 	}
 
 	//------------------------------------------------------------------------------
-	public void prepreDailyEntReport(char site, List<Order> lst)
+	public void prepareDailyEntReport(char site, List<Order> lst)
 	{
 		boolean chknew=false;
 		
@@ -177,7 +177,7 @@ public class ServiceOrders {
 	}
 	
 	//------------------------------------------------------------------------------
-	public void prepreDailyInOutReport( List<Order> lst)
+	public void prepareDailyInOutReport( List<Order> lst)
 	{
 		boolean chknew=false;
 		
@@ -209,14 +209,15 @@ public class ServiceOrders {
 		    	  if ( tmpOrd.getamountUSD() > 0 ) tmpOrd.setsite(OrderRules.SITE_BUY);
 		    	  if ( tmpOrd.getamountUSD() < 0 ) tmpOrd.setsite(OrderRules.SITE_SELL);
 		    	  if ( tmpOrd.getamountUSD() == 0 ) tmpOrd.setsite(OrderRules.SITE_NEUTRAL);
-		    		  
+		    	  tmpOrd.setagreedfx(-1);
+		    	  tmpOrd.setcurrency(OrderRules.CUR_USD);
 				 lst.add(tmpOrd);
 			}
 		}
 	}
 	
 	//------------------------------------------------------------------------------
-	public void prepreDailyTotalReport(char site, List<Order> lst)
+	public void prepareDailyTotalReport(char site, List<Order> lst)
 	{
 		boolean chknew=false;
 		
@@ -239,6 +240,8 @@ public class ServiceOrders {
 			{
 				 Order tmpOrd=new  Order(o1);
 				 tmpOrd.setamountUSD(o1);
+				 tmpOrd.setagreedfx(-1);
+				 tmpOrd.setcurrency(OrderRules.CUR_USD);
 				 lst.add(tmpOrd);
 			}
 		}
