@@ -1,3 +1,7 @@
+ stage('Initialize'){
+        def dockerHome = tool 'docker198'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
 pipeline {
     agent {
         docker {
