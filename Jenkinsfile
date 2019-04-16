@@ -7,7 +7,7 @@ pipeline {
     }
     stages {
         stage('Initialize'){
-            def dockerHome = tool 'docker198'
+            def dockerHome = tool name: 'docker198', type: 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
             env.PATH = "${dockerHome}/bin:${env.PATH}"
         }
 
